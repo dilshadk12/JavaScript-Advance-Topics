@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callbacks in asynchronous JS</title>
+</head>
+
+<body>
+    <!-- 
+        Javascript is an event driven language.This means that instead of waiting for a response before moving on,
+                JavaScript will keep executing while listening for othe events 
+            Note: Javascript is synchronous and sigle-threaded language means it will execute one thread at
+                  a time one by one .. in top-down method -->
+    <!-- Callback function give JS asynchronity -->
+    <!-- We will see how callback are used in Javascript as a asynchronous process   -->
+
+    <script>
+        setTimeout(function () {     // this function here is a callback function in setTimeout function and will be called afyer 5 sec  
+            console.log("timer");
+        }, 5000);                    // it will print "timer" after 5 second
+        function x(y) {
+            console.log("X");
+            y();
+        }
+        x(function y() {             // when we call this x function we are passing another function y in it so 'y' is callback function here
+            console.log("y");
+        });
+
+        // Output
+        //x
+        //y
+        //timer
+
+
+        // so How will our output be printed 
+        // 1. settimeout function will be called and o/p will be stored in saperate place and will be printed after 5 second
+        // 2. it will move to the next function in the meantime which is function x which will again call x written down
+        // 3. in x function call it will pass a callback function y where it will do console.log x and x will be printed first. and then y.
+        // 4. after 5 second "timer will be printed"
+
+
+        //Example 2.
+        const perOne = (friend, callbackfriend) => {
+            console.log(`I am busy talking to ${friend}. I'll talk to you later`);
+            callbackfriend();
+        }
+        const perTwo=()=>{
+            console.log("Hey what's up");
+        }
+        perOne("Dilshad",perTwo);
+        
+        // Output
+        // I am busy talking to Dilshad.I'll talk to you later
+        // Hey what's up 
+    </script>
+</body>
+
+</html>
