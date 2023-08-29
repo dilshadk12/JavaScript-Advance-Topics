@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback function</title>
+</head>
+
+<body>
+    <!-- What it does? -->
+    <!-- in normal function we pass variable as a parameter to function -->
+    <!-- Callback function tells us How to pass a function within a function as a parameter -->
+    <script>
+
+        // Function 1
+        function sayHello() {
+            console.log("hello");
+        }
+        function sayHi() {
+            console.log("hii");
+        }
+
+        // Function 2  will have a callback parameter to receive the function1
+        function add(num1, num2, callback) {
+            console.log(num1 + num2);
+            callback();    // calling the function
+        }
+        let a = 10;
+        let b = 20;
+        add(a, b, sayHello);  // passing the function as a parameter .. PS: do not use "function brackets"
+        add(50, 50, sayHi);  // passing the function as a parameter .. PS: do not use "function brackets"
+
+        //  we can directly call the sayHello functioj in add function then why use callback??
+        //  Answer: if we directly call hi/hello function in add function then we can only call one function at a time
+        //  but by callback function we can call a function in add function as many time as we want with different parameter also
+
+        // we can pass a function anonymously also 
+        add(100, 200, function () {
+            console.log("Bye...")
+        });
+
+
+    </script>
+</body>
+
+</html>
