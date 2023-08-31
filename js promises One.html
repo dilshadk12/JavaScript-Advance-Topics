@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises One</title>
+</head>
+
+<body>
+
+    <script>
+        const myPromise = new Promise((resolved, rejected) => {
+            const a = 2, b = 2;
+            const c = a + b;
+            if (c === 4) {
+                resolved(`yes!, ${a} + ${b} = 4`);
+            } else {
+                rejected(`no!, ${a} + ${b} != 4`);
+            }
+
+        });
+
+        myPromise.then((m) => {         // calling promise if resolved .. pass m variable in place of resolved to print the message
+            console.log(m);
+        }).catch((err) => {            // calling promise if rejected .. pass err variable in place ofrejected to print the message
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>
